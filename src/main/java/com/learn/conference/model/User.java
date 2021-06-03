@@ -15,10 +15,13 @@ public class User {
     public void setId(long id) {
         this.id = id;
     }
+
     @Column(name="FIRST_NAME")
     private String firstName;
+
     @Column(name="LAST_NAME")
     private String lastName;
+
     private int age;
     public String getFirstName() {
         return firstName;

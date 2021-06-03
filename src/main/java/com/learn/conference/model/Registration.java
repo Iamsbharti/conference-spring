@@ -1,5 +1,7 @@
 package com.learn.conference.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
@@ -13,7 +15,8 @@ public class Registration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany(mappedBy = "registration",cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @OneToMany(mappedBy = "registration",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Course> courses= new ArrayList<Course>();
 
     public List<Course> getCourses() {

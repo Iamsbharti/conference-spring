@@ -2,12 +2,14 @@ package com.learn.conference.service;
 
 import com.learn.conference.model.Course;
 import com.learn.conference.model.Registration;
+import com.learn.conference.model.RegistrationReport;
 import com.learn.conference.repository.CourseRepository;
 import com.learn.conference.repository.RegistrationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
@@ -32,6 +34,16 @@ public class RegistrationServiceImpl implements RegistrationService {
         // save course
         courseRepository.saveCourse(course);
         return registration;
+    }
+
+    @Override
+    public List<Registration> findAll() {
+        return registrationRepository.findAll();
+    }
+
+    @Override
+    public List<RegistrationReport> findAllReports() {
+        return registrationRepository.findAllReports();
     }
 
 }
