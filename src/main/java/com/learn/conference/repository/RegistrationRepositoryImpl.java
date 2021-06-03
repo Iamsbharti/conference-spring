@@ -23,14 +23,22 @@ public class RegistrationRepositoryImpl implements RegistrationRepository {
         List<Registration> registrations = entityManager.createQuery("select r from Registration r").getResultList();
         return registrations;
     }
-
+    /**
+     * @Override
+     *     public List<RegistrationReport> findAllReports() {
+     *         String reportQuery= "select new com.learn.conference.model.RegistrationReport" +
+     *                             "(r.name,c.name,c.description) "+
+     *                             "from Registration r, Course c "+
+     *                             "where r.id = c.registration.id";
+     *         List <RegistrationReport> registrationReports = entityManager.createQuery(reportQuery).getResultList();
+     *         return registrationReports;
+     *     }
+     * **/
     @Override
-    public List<RegistrationReport> findAllReports() {
-        String reportQuery= "select new com.learn.conference.model.RegistrationReport" +
-                            "(r.name,c.name,c.description) "+
-                            "from Registration r, Course c "+
-                            "where r.id = c.registration.id";
-        List <RegistrationReport> registrationReports = entityManager.createQuery(reportQuery).getResultList();
+    public List<RegistrationReport> findAllReports(){
+        List <RegistrationReport> registrationReports =
+                entityManager.createNamedQuery(Registration.REGISTRATION_REPORT).getResultList();
         return registrationReports;
     }
+
 }
