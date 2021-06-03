@@ -1,6 +1,8 @@
 package com.learn.conference.controller;
 
 import com.learn.conference.model.Registration;
+import com.learn.conference.service.RegistrationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.*;
 @Controller
 public class RegistrationController {
+    @Autowired
+    RegistrationService registrationService;
+
     @GetMapping("registration")
     public String getRegistration(@ModelAttribute("registration") Registration registration){
         return "registration";
@@ -21,6 +26,9 @@ public class RegistrationController {
         if(result.hasErrors()){
             System.out.println("Has ERRORS");
             return "registration";
+        }else{
+            System.out.println("NO ERRORS- Saving Registration::"+registration.getName());
+            registrationService.saveRegistration(registration);
         }
         return "redirect:registration";
     }
