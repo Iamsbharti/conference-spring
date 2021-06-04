@@ -17,12 +17,12 @@ public class User {
     }
 
     @Column(name="FIRST_NAME")
-    private String firstName;
+    public String firstName;
 
     @Column(name="LAST_NAME")
-    private String lastName;
+    public String lastName;
 
-    private int age;
+    public int age;
     public String getFirstName() {
         return firstName;
     }

@@ -43,7 +43,7 @@
     </a>
 
     <a class="btn btn-lg btn-primary" href="user" role="button">
-      Add User
+      Show Users
     </a>
   </div>
 </main>

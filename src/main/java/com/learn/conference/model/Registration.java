@@ -17,7 +17,8 @@ import java.util.List;
 })
 public class Registration {
     /** Names Queries **/
-    public static final String REGISTRATION_REPORT="registrationReport";
+    // works with EntityManager public static final String REGISTRATION_REPORT="registrationReport";
+    public static final String REGISTRATION_REPORT="Registration.registrationReport"; //spring-data implementation
     public static final String REGISTRATION_REPORT_JPQL=
             "select new com.learn.conference.model.RegistrationReport "+
                     "(r.name,c.name,c.description) "+

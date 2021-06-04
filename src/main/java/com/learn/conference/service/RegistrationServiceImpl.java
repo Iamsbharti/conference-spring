@@ -22,7 +22,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Transactional
     @Override
     public Registration saveRegistration(Registration registration){
-        registration = registrationRepository.saveRegistration(registration);
+        registration = registrationRepository.save(registration);
 
         /**
          * Add a Intro course mandatory for each registered user.
@@ -34,6 +34,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         // save course
         courseRepository.saveCourse(course);
         return registration;
+
     }
 
     @Override
@@ -43,7 +44,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public List<RegistrationReport> findAllReports() {
-        return registrationRepository.findAllReports();
+        return registrationRepository.registrationReport();
     }
 
 }
